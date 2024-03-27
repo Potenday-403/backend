@@ -1,0 +1,11 @@
+POST http://localhost:8080/gifts
+Content-Type: application/json
+
+{
+  "friendId": 1,
+  "eventType": "BIRTHDAY",
+  "giftName": "로보카 폴리",
+  "price": 17600,
+  "isReceived": true,
+  "date": "2024-03-01"
+}
