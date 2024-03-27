@@ -1,0 +1,8 @@
+PUT http://localhost:8080/greetings/category
+Content-Type: application/json
+
+{
+  "relationship": "CLOSE_FRIEND",
+  "eventType": "BIRTHDAY",
+  "eventPriority": "HIGH"
+}

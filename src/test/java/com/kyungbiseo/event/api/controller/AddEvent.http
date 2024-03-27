@@ -1,0 +1,10 @@
+POST http://localhost:8080/events
+Content-Type: application/json
+
+{
+  "friendId": 17,
+  "name": "강인이 생일",
+  "type": "BIRTHDAY",
+  "scheduledAt": "2024-03-09T00:00",
+  "priority": "HIGH"
+}
