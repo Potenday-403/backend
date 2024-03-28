@@ -14,7 +14,7 @@ public record EventDetailResponse(Long id,
 
 	public EventDetailResponse(Long id) {
 		this(
-			31L,
+			id,
 			"강인이 생일",
 			EventType.BIRTHDAY,
 			"2024-03-09T00:00",
