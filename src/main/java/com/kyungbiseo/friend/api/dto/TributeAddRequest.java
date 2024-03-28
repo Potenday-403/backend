@@ -4,8 +4,8 @@ import java.time.LocalDate;
 
 import com.kyungbiseo.event.domain.EventType;
 
-public record GiftHistoryAddRequest(Long friendId,
-									EventType eventType,
+public record TributeAddRequest(Long friendId,
+									TributeType type,
 									String giftName,
 									int price,
 									boolean isReceived,
