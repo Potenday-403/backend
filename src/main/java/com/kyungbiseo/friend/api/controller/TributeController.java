@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kyungbiseo.friend.api.dto.GiftHistoryAddRequest;
 
 @RestController
-@RequestMapping("/gifts")
+@RequestMapping("/tributes")
 public class GiftController {
 
 	@PostMapping
