@@ -14,7 +14,7 @@ import com.kyungbiseo.friend.api.dto.GiftHistoryAddRequest;
 public class GiftController {
 
 	@PostMapping
-	public ResponseEntity<Void> addTributeHistory(@RequestBody final GiftHistoryAddRequest request) {
+	public ResponseEntity<Void> addTribute(@RequestBody final TributeAddRequest request) {
 		return ResponseEntity
 			.status(HttpStatus.CREATED)
 			.build();
