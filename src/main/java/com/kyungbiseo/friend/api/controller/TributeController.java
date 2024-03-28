@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kyungbiseo.friend.api.dto.GiftHistoryAddRequest;
+import com.kyungbiseo.friend.api.dto.TributeAddRequest;
 
 @RestController
 @RequestMapping("/tributes")
-public class GiftController {
+public class TributeController {
 
 	@PostMapping
 	public ResponseEntity<Void> addTribute(@RequestBody final TributeAddRequest request) {

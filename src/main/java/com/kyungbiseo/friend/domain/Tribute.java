@@ -1,4 +1,4 @@
 package com.kyungbiseo.friend.domain;
 
-public class tribute {
+public class Tribute {
 }

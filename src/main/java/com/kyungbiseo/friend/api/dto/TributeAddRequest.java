@@ -2,7 +2,7 @@ package com.kyungbiseo.friend.api.dto;
 
 import java.time.LocalDate;
 
-import com.kyungbiseo.event.domain.EventType;
+import com.kyungbiseo.friend.domain.TributeType;
 
 public record TributeAddRequest(Long friendId,
 									TributeType type,
