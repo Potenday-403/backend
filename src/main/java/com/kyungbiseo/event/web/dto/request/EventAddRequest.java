@@ -1,4 +1,4 @@
-package com.kyungbiseo.event.web.dto;
+package com.kyungbiseo.event.web.dto.request;
 
 import java.time.LocalDateTime;
 

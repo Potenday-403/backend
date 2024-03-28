@@ -6,5 +6,5 @@ Content-Type: application/json
   "name": "강인이 생일",
   "type": "BIRTHDAY",
   "scheduledAt": "2024-03-09T00:00",
-  "priority": "HIGH"
+  "priority": "CRUCIAL"
 }

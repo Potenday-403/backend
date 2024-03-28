@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kyungbiseo.event.web.dto.EventAddRequest;
-import com.kyungbiseo.event.web.dto.EventUpdateRequest;
+import com.kyungbiseo.event.web.dto.request.EventAddRequest;
+import com.kyungbiseo.event.web.dto.request.EventUpdateRequest;
 
 import lombok.RequiredArgsConstructor;
 
