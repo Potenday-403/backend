@@ -1,4 +1,4 @@
-package com.kyungbiseo.statistic.api.dto.request;
+package com.kyungbiseo.statistic.web.dto.request;
 
 import com.kyungbiseo.event.domain.EventPriority;
 import com.kyungbiseo.event.domain.EventType;

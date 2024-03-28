@@ -1,7 +1,7 @@
 package com.kyungbiseo.event.domain;
 
 public enum EventPriority {
-	HIGH,
-	MEDIUM,
-	LOW
+	CRUCIAL,
+	IMPORTANT,
+	NORMAL
 }

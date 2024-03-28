@@ -1,9 +1,10 @@
-package com.kyungbiseo.statistic.api.dto.response;
+package com.kyungbiseo.statistic.web.dto.response;
 
 import java.util.Map;
 
 public record CategoryStatisticResponse(Map<String, String> categories,
-										Map<String, Integer> amounts) {
+										Map<String, Integer> amounts,
+										int headcount) {
 	public CategoryStatisticResponse() {
 		this(Map.ofEntries(
 				Map.entry("ageGroup", "TWENTIES_LATE"),
@@ -18,7 +19,8 @@ public record CategoryStatisticResponse(Map<String, String> categories,
 				Map.entry("min", 50000),
 				Map.entry("avg",70000),
 				Map.entry("med",120000)
-			)
+			),
+			32
 		);
 	}
 }

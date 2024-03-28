@@ -1,5 +1,9 @@
 package com.kyungbiseo.event.domain;
 
 public enum EventType {
-	BIRTHDAY
+	BIRTHDAY,
+	WEDDING,
+	FIRST_BIRTHDAY,
+	FUNERAL,
+	ETC
 }
