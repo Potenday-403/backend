@@ -12,7 +12,7 @@ import com.kyungbiseo.event.web.dto.response.ReminderResponse;
 public class ReminderController {
 
 	@GetMapping
-	public ResponseEntity<ReminderResponse> reminder() {
+	public ResponseEntity<ReminderResponse> getReminder() {
 		return ResponseEntity.ok(new ReminderResponse());
 	}
 }
