@@ -3,8 +3,8 @@ Content-Type: application/json
 
 {
   "friendId": 1,
-  "eventType": "BIRTHDAY",
-  "giftName": "로보카 폴리",
+  "type": "BIRTHDAY",
+  "name": "로보카 폴리",
   "price": 17600,
   "isReceived": true,
   "date": "2024-03-01"
