@@ -23,7 +23,7 @@ public class EventCudService implements EventCudUseCase {
 
 	@Override
 	public void editEvent(EventEditCommand command) {
-		Event edited = eventRepository.findBy(command.userId());
+		Event edited = eventRepository.findBy(command.id());
 		edited.edit(command.name(), command.type(), command.priority(), command.scheduledAt());
 		edited.assignTo(command.friendId());
 		eventRepository.update(edited);
