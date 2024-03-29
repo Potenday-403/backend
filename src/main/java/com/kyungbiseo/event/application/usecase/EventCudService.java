@@ -6,7 +6,7 @@ import com.kyungbiseo.event.application.dto.EventAddCommand;
 import com.kyungbiseo.event.application.dto.EventEditCommand;
 
 @Service
-public class EventCUDService implements EventCUDUseCase {
+public class EventCudService implements EventCudUseCase {
 	@Override
 	public void addEvent(EventAddCommand command) {
 

@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/events")
 @RequiredArgsConstructor
-public class EventCUDController {
+public class EventCudController {
 
 	@PostMapping
 	public ResponseEntity<Void> addEvent(@RequestBody final EventAddRequest request) {
