@@ -16,26 +16,13 @@ public class Event {
 	private final Long userId;
 	private Long friendId;
 
-
-	@Builder(builderMethodName = "notAssignedEventBuilder")
-	private Event(Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId) {
-
-		validate(name);
-
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.priority = priority;
-		this.scheduledAt = scheduledAt;
-		this.userId = userId;
-	}
-
-	@Builder(builderMethodName = "assignedEventBuilder")
+	@Builder
 	private Event(
 		Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId, Long friendId) {
 
 		validate(name);
 
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.priority = priority;
@@ -53,6 +40,10 @@ public class Event {
 
 	public void assignTo(Long friendId) {
 		this.friendId = friendId;
+	}
+
+	public void disCharge() {
+		this.friendId = null;
 	}
 
 	public boolean isAssigned() {

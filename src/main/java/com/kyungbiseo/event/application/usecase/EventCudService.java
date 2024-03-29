@@ -25,8 +25,12 @@ public class EventCudService implements EventCudUseCase {
 	public void editEvent(EventEditCommand command) {
 		Event toBeEdited = eventRepository.findBy(command.id());
 		toBeEdited.edit(command.name(), command.type(), command.priority(), command.scheduledAt());
-		if (toBeEdited.isAssigned()) {
+
+		if (command.isAssigned()) {
 			toBeEdited.assignTo(command.friendId());
+		}
+		else {
+			toBeEdited.disCharge();
 		}
 
 		eventRepository.update(toBeEdited);

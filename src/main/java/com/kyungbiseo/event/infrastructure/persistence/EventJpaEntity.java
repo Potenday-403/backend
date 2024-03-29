@@ -56,7 +56,7 @@ public class EventJpaEntity {
 	}
 
 	public Event toEvent() {
-		return Event.notAssignedEventBuilder()
+		return Event.builder()
 			.id(id)
 			.name(name)
 			.type(type)

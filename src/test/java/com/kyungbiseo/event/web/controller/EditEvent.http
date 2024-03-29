@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "name": "조카 돌잔치",
-  "friendId": 18,
+
   "type": "FIRST_BIRTHDAY",
   "scheduledAt": "2024-03-10T00:00",
   "priority": "IMPORTANT"
