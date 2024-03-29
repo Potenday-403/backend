@@ -1,4 +1,4 @@
-PATCH http://localhost:8080/events/17
+PATCH http://localhost:8080/events/1
 Content-Type: application/json
 
 {
