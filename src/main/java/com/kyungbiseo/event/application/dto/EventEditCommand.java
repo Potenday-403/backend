@@ -9,5 +9,6 @@ public record EventEditCommand(String name,
 							   EventType type,
 							   EventPriority priority,
 							   LocalDateTime scheduledAt,
+							   Long userId,
 							   Long friendId) {
 }

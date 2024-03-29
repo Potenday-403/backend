@@ -19,4 +19,14 @@ public class EventRepositoryImpl implements EventRepository {
 	public void save(Event event) {
 
 	}
+
+	@Override
+	public void deleteBy(Long id) {
+
+	}
+
+	@Override
+	public Event findBy(Long id) {
+		return null;
+	}
 }
