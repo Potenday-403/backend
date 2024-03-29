@@ -1,4 +1,37 @@
 package com.kyungbiseo.event.domain;
 
+import java.time.LocalDateTime;
+
 public class Event {
+	private Long id;
+	private String name;
+	private EventType type;
+	private EventPriority priority;
+	private LocalDateTime scheduledAt;
+
+	private Long userId;
+	private Long friendId;
+
+	public Event(
+		String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId, Long friendId) {
+
+		validate(name);
+
+		this.name = name;
+		this.type = type;
+		this.priority = priority;
+		this.scheduledAt = scheduledAt;
+		this.userId = userId;
+		this.friendId = friendId;
+	}
+
+	public void edit(String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long friendId) {
+
+	}
+
+	private void validate(String name) {
+		if (name == null || name.isBlank() || name.length() > 50) {
+			// throw new InvalidEventNameException();
+		}
+	}
 }

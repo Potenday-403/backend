@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 import com.kyungbiseo.event.domain.EventPriority;
 import com.kyungbiseo.event.domain.EventType;
 
-public record EventEditCommand(Long friendId,
-							   String name,
+public record EventEditCommand(String name,
 							   EventType type,
+							   EventPriority priority,
 							   LocalDateTime scheduledAt,
-							   EventPriority priority) {
+							   Long friendId) {
 }
