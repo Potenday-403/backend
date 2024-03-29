@@ -26,8 +26,7 @@ public class EventCudController {
 
 	@PostMapping
 	public ResponseEntity<Void> addEvent(@RequestBody final EventAddRequest request) {
-		EventAddCommand command = new EventAddCommand(
-			request.name(), request.type(), request.priority(), request.scheduledAt(), 1L, request.friendId());
+		EventAddCommand command = request.toCommandWith(1L);
 		eventCudUseCase.addEvent(command);
 
 		return ResponseEntity
@@ -62,4 +61,5 @@ public class EventCudController {
 			.noContent()
 			.build();
 	}
+
 }

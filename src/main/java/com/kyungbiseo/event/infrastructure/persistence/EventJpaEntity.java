@@ -56,7 +56,14 @@ public class EventJpaEntity {
 	}
 
 	public Event toEvent() {
-		return new Event(id, name, type, priority, scheduledAt, userId);
+		return Event.notAssignedEventBuilder()
+			.id(id)
+			.name(name)
+			.type(type)
+			.priority(priority)
+			.scheduledAt(scheduledAt)
+			.userId(userId)
+			.build();
 	}
 
 	public void updateFrom(Event event) {

@@ -2,6 +2,7 @@ package com.kyungbiseo.event.domain;
 
 import java.time.LocalDateTime;
 
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
@@ -15,7 +16,12 @@ public class Event {
 	private final Long userId;
 	private Long friendId;
 
-	public Event(Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId) {
+
+	@Builder(builderMethodName = "notAssignedEventBuilder")
+	private Event(Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId) {
+
+		validate(name);
+
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -24,8 +30,9 @@ public class Event {
 		this.userId = userId;
 	}
 
-	public Event(
-		String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId, Long friendId) {
+	@Builder(builderMethodName = "assignedEventBuilder")
+	private Event(
+		Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId, Long friendId) {
 
 		validate(name);
 
@@ -49,7 +56,7 @@ public class Event {
 	}
 
 	public boolean isAssigned() {
-		return this.friendId != null;
+		return friendId != null;
 	}
 
 	private void validate(String name) {
