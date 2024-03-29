@@ -68,12 +68,19 @@ public class EventRepositoryImpl implements EventRepository {
 
 	@Override
 	public Event findBy(Long id) {
-		return findEventJpaEntityBy(id)
-			.toEvent();
+		EventJpaEntity eventJpaEntity = findEventJpaEntityBy(id);
+		Optional<EventFriendJpaEntity> eventFriendJpaOptional = eventFriendJpaRepository.findById(id);
+
+		Event event = eventJpaEntity.toEvent();
+		eventFriendJpaOptional.ifPresent(
+			eventFriendJpaEntity -> event.assignTo(eventFriendJpaEntity.getFriendId())
+		);
+
+		return event;
 	}
 
 	private EventJpaEntity findEventJpaEntityBy(Long id) {
 		return eventJpaRepository.findById(id)
-												.orElseThrow(RuntimeException::new);
+											.orElseThrow(RuntimeException::new);
 	}
 }

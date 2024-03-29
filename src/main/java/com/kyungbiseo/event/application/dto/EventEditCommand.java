@@ -12,4 +12,8 @@ public record EventEditCommand(Long id,
 							   LocalDateTime scheduledAt,
 							   Long userId,
 							   Long friendId) {
+
+	public boolean isAssigned() {
+		return friendId != null;
+	}
 }

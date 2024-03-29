@@ -14,6 +14,18 @@ public record EventAddCommand(String name,
 							  Long friendId) {
 
 	public Event toEvent() {
-		return new Event(name, type, priority, scheduledAt, userId, friendId);
+		Event event = Event.builder()
+			.name(name)
+			.type(type)
+			.priority(priority)
+			.scheduledAt(scheduledAt)
+			.userId(userId)
+			.build();
+
+		if (friendId != null) {
+			event.assignTo(friendId);
+		}
+
+		return event;
 	}
 }
