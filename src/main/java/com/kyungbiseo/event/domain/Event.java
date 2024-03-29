@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 public class Event {
-	private Long id;
+	private final Long id;
 	private String name;
 	private EventType type;
 	private EventPriority priority;
