@@ -10,7 +10,7 @@ import com.kyungbiseo.event.domain.EventRepository;
 import lombok.RequiredArgsConstructor;
 
 /**
- * @TODO exception 처리
+ * 추후 exception 처리 필요
  */
 @Repository
 @RequiredArgsConstructor
