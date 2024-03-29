@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kyungbiseo.event.web.dto.request.EventAddRequest;
-import com.kyungbiseo.event.web.dto.request.EventUpdateRequest;
+import com.kyungbiseo.event.web.dto.request.EventEditRequest;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,8 +28,8 @@ public class EventCUDController {
 	}
 
 	@PatchMapping("/{id}")
-	public ResponseEntity<Void> updateEvent(@PathVariable final Long id,
-											@RequestBody final EventUpdateRequest request) {
+	public ResponseEntity<Void> editEvent(@PathVariable final Long id,
+											@RequestBody final EventEditRequest request) {
 		return ResponseEntity
 			.ok()
 			.build();
