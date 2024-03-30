@@ -1,6 +1,6 @@
 package com.kyungbiseo.event.infrastructure.persistence;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EventJpaRepository extends CrudRepository<EventJpaEntity, Long> {
+public interface EventJpaRepository extends JpaRepository<EventJpaEntity, Long> {
 }

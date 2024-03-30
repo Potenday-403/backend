@@ -3,8 +3,8 @@ Content-Type: application/json
 
 {
   "friendId": 17,
-  "name": "강인이 생일",
+  "name": "ㄴㄴㄴㄴ",
   "type": "BIRTHDAY",
-  "scheduledAt": "2024-03-09T00:00",
+  "scheduledAt": "2024-04-01T00:00",
   "priority": "CRUCIAL"
 }

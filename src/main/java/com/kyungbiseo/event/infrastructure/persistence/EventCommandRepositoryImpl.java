@@ -1,11 +1,12 @@
 package com.kyungbiseo.event.infrastructure.persistence;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import com.kyungbiseo.event.domain.Event;
-import com.kyungbiseo.event.domain.EventRepository;
+import com.kyungbiseo.event.domain.EventCommandRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +15,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Repository
 @RequiredArgsConstructor
-public class EventRepositoryImpl implements EventRepository {
+public class EventCommandRepositoryImpl implements EventCommandRepository {
 	private final EventJpaRepository eventJpaRepository;
 	private final EventFriendJpaRepository eventFriendJpaRepository;
 
@@ -25,13 +26,13 @@ public class EventRepositoryImpl implements EventRepository {
 
 
 		if (event.isAssigned()) {
-			EventFriendJpaEntity eventFriendJPAEntity = EventFriendJpaEntity.of(saved.getId(), event.getFriendId());
+			EventFriendJpaEntity eventFriendJPAEntity = EventFriendJpaEntity.of(saved.getId(), event.friendId());
 			eventFriendJpaRepository.save(eventFriendJPAEntity);
 		}
 	}
 
 	@Override
-	public void update(Event event) {
+	public void merge(Event event) {
 		EventJpaEntity toBeUpdated = findEventJpaEntityBy(event.getId());
 		toBeUpdated.updateFrom(event);
 
@@ -44,26 +45,21 @@ public class EventRepositoryImpl implements EventRepository {
 
 		eventFriendJpaOptional.ifPresentOrElse(
 			eventFriendJpaEntity -> {
-				if (!eventFriendJpaEntity.getFriendId().equals(event.getFriendId())) {
+				if (!eventFriendJpaEntity.isIdenticalWith(event.getFriend())) {
 					eventFriendJpaRepository.delete(eventFriendJpaEntity);
 
 					eventFriendJpaRepository.save(
-						EventFriendJpaEntity.of(event.getId(), event.getFriendId()));
+						EventFriendJpaEntity.of(event.getId(), event.friendId()));
 				}
 			},
-			() -> eventFriendJpaRepository.save(EventFriendJpaEntity.of(event.getId(), event.getFriendId()))
+			() -> eventFriendJpaRepository.save(EventFriendJpaEntity.of(event.getId(), event.friendId()))
 		);
 	}
 
 	@Override
-	public void deleteBy(Long id) {
-		EventJpaEntity eventJpaEntity = findEventJpaEntityBy(id);
-
-		Optional<EventFriendJpaEntity> eventFriendJpaOptional =
-			eventFriendJpaRepository.findById(eventJpaEntity.getId());
-		eventFriendJpaOptional.ifPresent(eventFriendJpaRepository::delete);
-
-		eventJpaRepository.delete(eventJpaEntity);
+	public void deleteAllBy(List<Long> ids) {
+		eventFriendJpaRepository.deleteAllByIdInBatch(ids);
+		eventJpaRepository.deleteAllByIdInBatch(ids);
 	}
 
 	@Override
@@ -73,7 +69,7 @@ public class EventRepositoryImpl implements EventRepository {
 
 		Event event = eventJpaEntity.toEvent();
 		eventFriendJpaOptional.ifPresent(
-			eventFriendJpaEntity -> event.assignTo(eventFriendJpaEntity.getFriendId())
+			eventFriendJpaEntity -> event.assignToFriendOf(eventFriendJpaEntity.getFriendId())
 		);
 
 		return event;

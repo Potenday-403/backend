@@ -1,2 +1,2 @@
-GET http://localhost:8080/reminder
+GET http://localhost:8080/reminder?date=2024-03-31
 Content-Type: application/json

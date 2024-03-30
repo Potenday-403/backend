@@ -14,21 +14,10 @@ public class Event {
 	private LocalDateTime scheduledAt;
 
 	private final Long userId;
-	private Long friendId;
+	private EventFriend friend;
 
-	@Builder
-	private Event(
-		Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId, Long friendId) {
-
-		validate(name);
-
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.priority = priority;
-		this.scheduledAt = scheduledAt;
-		this.userId = userId;
-		this.friendId = friendId;
+	public Long friendId() {
+		return friend.id();
 	}
 
 	public void edit(String name, EventType type, EventPriority priority, LocalDateTime scheduledAt) {
@@ -38,21 +27,40 @@ public class Event {
 		this.scheduledAt = scheduledAt;
 	}
 
-	public void assignTo(Long friendId) {
-		this.friendId = friendId;
+	public void assignTo(EventFriend eventFriend) {
+		this.friend = eventFriend;
+	}
+
+	public void assignToFriendOf(Long friendId) {
+		friend = EventFriend.of(friendId);
 	}
 
 	public void disCharge() {
-		this.friendId = null;
+		friend = EventFriend.ofEmpty();
 	}
 
 	public boolean isAssigned() {
-		return friendId != null;
+		return !friend.isEmpty();
 	}
 
 	private void validate(String name) {
 		if (name == null || name.isBlank() || name.length() > 50) {
 			// throw new InvalidEventNameException();
 		}
+	}
+
+	@Builder
+	private Event(
+		Long id, String name, EventType type, EventPriority priority, LocalDateTime scheduledAt, Long userId) {
+
+		validate(name);
+
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.priority = priority;
+		this.scheduledAt = scheduledAt;
+		this.userId = userId;
+		this.friend = EventFriend.ofEmpty();
 	}
 }

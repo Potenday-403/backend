@@ -13,7 +13,7 @@ public record EventEditCommand(Long id,
 							   Long userId,
 							   Long friendId) {
 
-	public boolean isAssigned() {
+	public boolean hasFriendId() {
 		return friendId != null;
 	}
 }
