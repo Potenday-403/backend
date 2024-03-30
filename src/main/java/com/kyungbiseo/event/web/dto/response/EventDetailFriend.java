@@ -3,7 +3,7 @@ package com.kyungbiseo.event.web.dto.response;
 import com.kyungbiseo.event.domain.EventType;
 import com.kyungbiseo.friend.domain.Relationship;
 
-public record EventDetailFriend(Long id,
+record EventDetailFriend(Long id,
 								String name,
 								Relationship relationship,
 								EventDetailLastTribute lastTribute) {

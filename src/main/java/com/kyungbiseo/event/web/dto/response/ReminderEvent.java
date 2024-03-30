@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import com.kyungbiseo.event.domain.Event;
 import com.kyungbiseo.event.domain.EventPriority;
 
-public record ReminderEvent(Long id,
+record ReminderEvent(Long id,
 							String name,
 							LocalDateTime scheduledAt,
 							EventPriority priority) {
