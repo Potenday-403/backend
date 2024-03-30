@@ -5,11 +5,13 @@ import com.kyungbiseo.event.domain.EventFriend;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "eventFriend")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class EventFriendJpaEntity {

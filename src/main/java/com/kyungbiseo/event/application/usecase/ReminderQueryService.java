@@ -18,8 +18,8 @@ public class ReminderQueryService implements ReminderQueryUseCase {
 	@Override
 	public List<Event> getReminderEventsAt(LocalDate date) {
 		int duration = 10;
-		LocalDate endDate = date.plusDays(duration - 1);
+		LocalDate limitDate = date.plusDays(duration);
 
-		return eventQueryRepository.findAllScheduledAtBetween(date, endDate);
+		return eventQueryRepository.findAllScheduledBetween(date, limitDate);
 	}
 }
