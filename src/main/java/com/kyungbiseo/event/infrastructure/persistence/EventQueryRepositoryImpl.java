@@ -4,6 +4,7 @@ import static com.kyungbiseo.event.infrastructure.persistence.QEventJpaEntity.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,22 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EventQueryRepositoryImpl implements EventQueryRepository {
 	private final JPAQueryFactory queryFactory;
+
+	@Override
+	public Event findBy(Long id) {
+		Optional<EventJpaEntity> eventJpaOptional = Optional.ofNullable(
+			queryFactory
+				.select(eventJpaEntity)
+				.from(eventJpaEntity)
+				.where(
+					eventJpaEntity.id.eq(id))
+				.fetchFirst()
+		);
+
+		return eventJpaOptional
+			.orElseThrow(RuntimeException::new)
+			.toEvent();
+	}
 
 	@Override
 	public List<Event> findAllScheduledOn(int year, int month) {

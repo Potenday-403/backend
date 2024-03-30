@@ -1,7 +1,15 @@
 package com.kyungbiseo.event.domain;
 
+import com.kyungbiseo.friend.domain.Relationship;
+
+import lombok.Getter;
+
+@Getter
 public class EventFriend {
 	private Long id;
+	private String name;
+	private Relationship relationship;
+	private EventFriendTribute lastTribute;
 
 	public static EventFriend of(Long id) {
 		return new EventFriend(id);

@@ -1,5 +1,7 @@
 package com.kyungbiseo.event.application.usecase;
 
-public interface EventDetailQueryUseCase {
+import com.kyungbiseo.event.domain.Event;
 
+public interface EventDetailQueryUseCase {
+	Event getEventBy(Long id);
 }
