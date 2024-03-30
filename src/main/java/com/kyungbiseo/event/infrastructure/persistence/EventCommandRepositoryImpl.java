@@ -1,5 +1,6 @@
 package com.kyungbiseo.event.infrastructure.persistence;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -56,14 +57,9 @@ public class EventCommandRepositoryImpl implements EventCommandRepository {
 	}
 
 	@Override
-	public void deleteBy(Long id) {
-		EventJpaEntity eventJpaEntity = findEventJpaEntityBy(id);
-
-		Optional<EventFriendJpaEntity> eventFriendJpaOptional =
-			eventFriendJpaRepository.findById(eventJpaEntity.getId());
-		eventFriendJpaOptional.ifPresent(eventFriendJpaRepository::delete);
-
-		eventJpaRepository.delete(eventJpaEntity);
+	public void deleteAllBy(List<Long> ids) {
+		eventFriendJpaRepository.deleteAllByIdInBatch(ids);
+		eventJpaRepository.deleteAllByIdInBatch(ids);
 	}
 
 	@Override

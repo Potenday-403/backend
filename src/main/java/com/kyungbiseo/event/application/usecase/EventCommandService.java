@@ -1,5 +1,7 @@
 package com.kyungbiseo.event.application.usecase;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.kyungbiseo.event.application.dto.EventAddCommand;
@@ -38,7 +40,7 @@ public class EventCommandService implements EventCommandUseCase {
 	}
 
 	@Override
-	public void deleteEventBy(Long id) {
-		eventCommandRepository.deleteBy(id);
+	public void deleteEventsBy(List<Long> ids) {
+		eventCommandRepository.deleteAllBy(ids);
 	}
 }

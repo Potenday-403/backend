@@ -1,5 +1,7 @@
 package com.kyungbiseo.event.web.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,9 +55,9 @@ public class EventCommandController {
 			.build();
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteEvent(@PathVariable final Long id) {
-		eventCommandUseCase.deleteEventBy(id);
+	@DeleteMapping
+	public ResponseEntity<Void> deleteEvent(@RequestBody final List<Long> ids) {
+		eventCommandUseCase.deleteEventsBy(ids);
 
 		return ResponseEntity
 			.noContent()
