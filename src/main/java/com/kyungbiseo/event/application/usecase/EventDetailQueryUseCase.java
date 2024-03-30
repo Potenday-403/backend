@@ -1,5 +1,5 @@
 package com.kyungbiseo.event.application.usecase;
 
-public interface GetReminderUseCase {
+public interface EventDetailQueryUseCase {
 
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Repository;
 
 import com.kyungbiseo.event.domain.Event;
-import com.kyungbiseo.event.domain.EventRepository;
+import com.kyungbiseo.event.domain.EventCommandRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Repository
 @RequiredArgsConstructor
-public class EventRepositoryImpl implements EventRepository {
+public class EventCommandRepositoryImpl implements EventCommandRepository {
 	private final EventJpaRepository eventJpaRepository;
 	private final EventFriendJpaRepository eventFriendJpaRepository;
 

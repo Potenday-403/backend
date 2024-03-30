@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.kyungbiseo.event.application.dto.EventAddCommand;
 import com.kyungbiseo.event.application.dto.EventEditCommand;
 import com.kyungbiseo.event.domain.Event;
-import com.kyungbiseo.event.domain.EventRepository;
+import com.kyungbiseo.event.domain.EventCommandRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -13,17 +13,17 @@ import lombok.RequiredArgsConstructor;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class EventCudService implements EventCudUseCase {
-	private final EventRepository eventRepository;
+public class EventCommandService implements EventCommandUseCase {
+	private final EventCommandRepository eventCommandRepository;
 	@Override
 	public void addEvent(EventAddCommand command) {
 		Event event = command.toEvent();
-		eventRepository.save(event);
+		eventCommandRepository.save(event);
 	}
 
 	@Override
 	public void editEvent(EventEditCommand command) {
-		Event toBeEdited = eventRepository.findBy(command.id());
+		Event toBeEdited = eventCommandRepository.findBy(command.id());
 		toBeEdited.edit(command.name(), command.type(), command.priority(), command.scheduledAt());
 
 		if (command.hasFriendId()) {
@@ -34,11 +34,11 @@ public class EventCudService implements EventCudUseCase {
 			toBeEdited.disCharge();
 		}
 
-		eventRepository.merge(toBeEdited);
+		eventCommandRepository.merge(toBeEdited);
 	}
 
 	@Override
 	public void deleteEventBy(Long id) {
-		eventRepository.deleteBy(id);
+		eventCommandRepository.deleteBy(id);
 	}
 }

@@ -3,7 +3,7 @@ package com.kyungbiseo.event.application.usecase;
 import com.kyungbiseo.event.application.dto.EventAddCommand;
 import com.kyungbiseo.event.application.dto.EventEditCommand;
 
-public interface EventCudUseCase {
+public interface EventCommandUseCase {
 
 	/**
 	 * 이벤트 등록

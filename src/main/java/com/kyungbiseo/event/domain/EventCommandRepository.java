@@ -1,6 +1,6 @@
 package com.kyungbiseo.event.domain;
 
-public interface EventRepository {
+public interface EventCommandRepository {
 	void save(Event event);
 
 	void merge(Event event);
