@@ -6,4 +6,9 @@ spring:
     name: kyungbiseo
   profiles:
     default: dev
+  datasource:
+    url: jdbc:mysql://db-potenday.cnoy84emgywr.ap-northeast-2.rds.amazonaws.com:3306/potenday?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
