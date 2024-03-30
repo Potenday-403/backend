@@ -3,6 +3,7 @@ package com.kyungbiseo.event.application.dto;
 import java.time.LocalDateTime;
 
 import com.kyungbiseo.event.domain.Event;
+import com.kyungbiseo.event.domain.EventFriend;
 import com.kyungbiseo.event.domain.EventPriority;
 import com.kyungbiseo.event.domain.EventType;
 
@@ -23,7 +24,7 @@ public record EventAddCommand(String name,
 			.build();
 
 		if (friendId != null) {
-			event.assignTo(friendId);
+			event.assignToFriendOf(friendId);
 		}
 
 		return event;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.kyungbiseo.event.application.dto.EventAddCommand;
 import com.kyungbiseo.event.application.dto.EventEditCommand;
 import com.kyungbiseo.event.domain.Event;
+import com.kyungbiseo.event.domain.EventFriend;
 import com.kyungbiseo.event.domain.EventRepository;
 
 import jakarta.transaction.Transactional;
@@ -26,8 +27,9 @@ public class EventCudService implements EventCudUseCase {
 		Event toBeEdited = eventRepository.findBy(command.id());
 		toBeEdited.edit(command.name(), command.type(), command.priority(), command.scheduledAt());
 
-		if (command.isAssigned()) {
-			toBeEdited.assignTo(command.friendId());
+		if (command.hasFriendId()) {
+			toBeEdited.assignToFriendOf(
+				command.friendId());
 		}
 		else {
 			toBeEdited.disCharge();

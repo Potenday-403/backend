@@ -25,7 +25,7 @@ public class EventRepositoryImpl implements EventRepository {
 
 
 		if (event.isAssigned()) {
-			EventFriendJpaEntity eventFriendJPAEntity = EventFriendJpaEntity.of(saved.getId(), event.getFriendId());
+			EventFriendJpaEntity eventFriendJPAEntity = EventFriendJpaEntity.of(saved.getId(), event.friendId());
 			eventFriendJpaRepository.save(eventFriendJPAEntity);
 		}
 	}
@@ -44,14 +44,14 @@ public class EventRepositoryImpl implements EventRepository {
 
 		eventFriendJpaOptional.ifPresentOrElse(
 			eventFriendJpaEntity -> {
-				if (!eventFriendJpaEntity.getFriendId().equals(event.getFriendId())) {
+				if (!eventFriendJpaEntity.isIdenticalWith(event.getFriend())) {
 					eventFriendJpaRepository.delete(eventFriendJpaEntity);
 
 					eventFriendJpaRepository.save(
-						EventFriendJpaEntity.of(event.getId(), event.getFriendId()));
+						EventFriendJpaEntity.of(event.getId(), event.friendId()));
 				}
 			},
-			() -> eventFriendJpaRepository.save(EventFriendJpaEntity.of(event.getId(), event.getFriendId()))
+			() -> eventFriendJpaRepository.save(EventFriendJpaEntity.of(event.getId(), event.friendId()))
 		);
 	}
 
@@ -73,7 +73,7 @@ public class EventRepositoryImpl implements EventRepository {
 
 		Event event = eventJpaEntity.toEvent();
 		eventFriendJpaOptional.ifPresent(
-			eventFriendJpaEntity -> event.assignTo(eventFriendJpaEntity.getFriendId())
+			eventFriendJpaEntity -> event.assignToFriendOf(eventFriendJpaEntity.getFriendId())
 		);
 
 		return event;

@@ -1,5 +1,7 @@
 package com.kyungbiseo.event.infrastructure.persistence;
 
+import com.kyungbiseo.event.domain.EventFriend;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -18,6 +20,10 @@ public class EventFriendJpaEntity {
 
 	public static EventFriendJpaEntity of(Long eventId, Long friendId) {
 		return new EventFriendJpaEntity(eventId, friendId);
+	}
+
+	public boolean isIdenticalWith(EventFriend eventFriend) {
+		return friendId.equals(eventFriend.id());
 	}
 
 	private EventFriendJpaEntity(Long eventId, Long friendId) {
