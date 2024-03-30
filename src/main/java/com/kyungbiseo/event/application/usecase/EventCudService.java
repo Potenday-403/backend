@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import com.kyungbiseo.event.application.dto.EventAddCommand;
 import com.kyungbiseo.event.application.dto.EventEditCommand;
 import com.kyungbiseo.event.domain.Event;
-import com.kyungbiseo.event.domain.EventFriend;
 import com.kyungbiseo.event.domain.EventRepository;
 
 import jakarta.transaction.Transactional;
@@ -35,7 +34,7 @@ public class EventCudService implements EventCudUseCase {
 			toBeEdited.disCharge();
 		}
 
-		eventRepository.update(toBeEdited);
+		eventRepository.merge(toBeEdited);
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class EventRepositoryImpl implements EventRepository {
 	}
 
 	@Override
-	public void update(Event event) {
+	public void merge(Event event) {
 		EventJpaEntity toBeUpdated = findEventJpaEntityBy(event.getId());
 		toBeUpdated.updateFrom(event);
 
