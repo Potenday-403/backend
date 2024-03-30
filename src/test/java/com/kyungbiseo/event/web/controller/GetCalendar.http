@@ -1,2 +1,2 @@
-GET http://localhost:8080/calendar?year=2024&month=3
+GET http://localhost:8080/calendar?year=2024&month=12
 Content-Type: application/json

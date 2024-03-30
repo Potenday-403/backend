@@ -22,7 +22,19 @@ public class EventQueryRepositoryImpl implements EventQueryRepository {
 
 	@Override
 	public List<Event> findAllScheduledOn(int year, int month) {
-		return null;
+
+
+		return queryFactory
+			.select(eventJpaEntity)
+			.from(eventJpaEntity)
+			.where(
+				eventJpaEntity.scheduledAt
+					.between(LocalDate.of(year, month, 1).atStartOfDay(),
+						LocalDate.of((month == 12 ? year + 1 : year), (month == 12 ? 1 : month), 1).atStartOfDay()))
+			.fetch()
+			.stream()
+			.map(EventJpaEntity::toEvent)
+			.toList();
 	}
 
 	@Override
